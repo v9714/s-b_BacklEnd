@@ -23,7 +23,7 @@ server.use(cookieparser());
 
 server.use(
   cors({
-    origin: ["http://localhost:3000", "*"],
+    origin: "*",
     exposedHeaders: ["X-Total-Count"],
     credentials: true,
   })
