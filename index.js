@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const path = require("path");
 const cors = require("cors");
 const session = require("express-session");
 const connectToDB = require("./dBConnect");
@@ -22,11 +23,12 @@ server.use(cookieparser());
 
 server.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: ["http://localhost:3000", "*"],
     exposedHeaders: ["X-Total-Count"],
     credentials: true,
   })
-); 
+);
+server.use(express.static(path.resolve(__dirname, 'build')));
 
 server.use(
   session({
